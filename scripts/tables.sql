@@ -47,3 +47,12 @@ CREATE TABLE Product_Category (
     subcat VARCHAR(50),
     maintenance VARCHAR(50)
 ) CHARACTER SET utf8mb4 ;
+
+CREATE TABLE etl_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    tbl_name VARCHAR(100),
+    start_time DATETIME,
+    end_time DATETIME,
+    duration_seconds INT,
+    log_status VARCHAR(50)
+) CHARACTER SET utf8mb4;
