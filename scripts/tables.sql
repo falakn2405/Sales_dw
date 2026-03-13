@@ -1,5 +1,5 @@
 CREATE TABLE Customer_Info (
-	customer_id INT PRIMARY KEY,
+	customer_id INT,
     customer_key VARCHAR(50),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
@@ -9,7 +9,7 @@ CREATE TABLE Customer_Info (
 ) CHARACTER SET utf8mb4 ;
 
 CREATE TABLE Product_Info (
-	product_id INT PRIMARY KEY,
+	product_id INT,
     product_key VARCHAR(50),
 	product_name VARCHAR(50),
     product_cost INT,
