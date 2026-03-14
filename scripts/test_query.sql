@@ -1,8 +1,8 @@
 SELECT * FROM customer_info_raw;
 
-TRUNCATE TABLE customer_info;
+TRUNCATE TABLE customer_info_raw;
 
-SELECT COUNT(*) FROM customer_info;
+SELECT COUNT(*) FROM customer_info_raw;
 
 SELECT * FROM product_info;
 
@@ -28,6 +28,6 @@ TRUNCATE TABLE etl_log;
 
 SELECT * FROM etl_log;
 
-SHOW COLUMNS FROM customer_info;
+SHOW COLUMNS FROM customer_info_raw;
 
 SELECT * FROM customer_info_clean;

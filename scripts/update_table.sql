@@ -1,6 +1,6 @@
 -- Adding one more column for new data info
 
-ALTER TABLE customer_info
+ALTER TABLE customer_info_raw
 ADD COLUMN update_date DATETIME DEFAULT NOW();
 
 ALTER TABLE product_info

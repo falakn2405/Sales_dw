@@ -1,4 +1,4 @@
-CREATE TABLE Customer_Info (
+CREATE TABLE Customer_Info_RAW (
 	customer_id INT,
     customer_key VARCHAR(50),
     first_name VARCHAR(50),
