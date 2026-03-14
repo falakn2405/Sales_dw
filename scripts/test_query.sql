@@ -4,9 +4,9 @@ TRUNCATE TABLE customer_info_raw;
 
 SELECT COUNT(*) FROM customer_info_raw;
 
-SELECT * FROM product_info;
+SELECT * FROM product_info_raw;
 
-SELECT COUNT(*) FROM product_info;
+SELECT COUNT(*) FROM product_info_raw;
 
 SELECT * FROM sales_details;
 
@@ -31,3 +31,5 @@ SELECT * FROM etl_log;
 SHOW COLUMNS FROM customer_info_raw;
 
 SELECT * FROM customer_info_clean;
+
+SELECT * FROM product_info_clean;

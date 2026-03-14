@@ -1,10 +1,10 @@
 -- customer
 SET @start_time := NOW();
 
-TRUNCATE TABLE customer_info;
+TRUNCATE TABLE customer_info_raw;
 
-LOAD DATA LOCAL INFILE 'D:/Falak/DataWarehouse/dataset/customer_info.csv'
-INTO TABLE customer_info
+LOAD DATA LOCAL INFILE 'D:/Falak/Sales_dw/dataset/customer_info.csv'
+INTO TABLE customer_info_raw
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
@@ -24,10 +24,10 @@ VALUES (
 -- products
 SET @start_time := NOW();
 
-TRUNCATE TABLE product_info;
+TRUNCATE TABLE product_info_raw;
 
-LOAD DATA LOCAL INFILE 'D:/Falak/DataWarehouse/dataset/product_info.csv'
-INTO TABLE product_info
+LOAD DATA LOCAL INFILE 'D:/Falak/Sales_dw/dataset/product_info.csv'
+INTO TABLE product_info_raw
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
@@ -49,7 +49,7 @@ SET @start_time := NOW();
 
 TRUNCATE TABLE sales_details;
 
-LOAD DATA LOCAL INFILE 'D:/Falak/DataWarehouse/dataset/sales_details.csv'
+LOAD DATA LOCAL INFILE 'D:/Falak/Sales_dw/dataset/sales_details.csv'
 INTO TABLE sales_details
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -72,7 +72,7 @@ SET @start_time := NOW();
 
 TRUNCATE TABLE customer_loc;
 
-LOAD DATA LOCAL INFILE 'D:/Falak/DataWarehouse/dataset/customer_loc.csv'
+LOAD DATA LOCAL INFILE 'D:/Falak/Sales_dw/dataset/customer_loc.csv'
 INTO TABLE customer_loc
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -95,7 +95,7 @@ SET @start_time := NOW();
 
 TRUNCATE TABLE customer_profile;
 
-LOAD DATA LOCAL INFILE 'D:/Falak/DataWarehouse/dataset/customer_profile.csv'
+LOAD DATA LOCAL INFILE 'D:/Falak/Sales_dw/dataset/customer_profile.csv'
 INTO TABLE customer_profile
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
@@ -118,7 +118,7 @@ SET @start_time := NOW();
 
 TRUNCATE TABLE product_category;
 
-LOAD DATA LOCAL INFILE 'D:/Falak/DataWarehouse/dataset/product_category.csv'
+LOAD DATA LOCAL INFILE 'D:/Falak/Sales_dw/dataset/product_category.csv'
 INTO TABLE product_category
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'

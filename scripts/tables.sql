@@ -8,7 +8,7 @@ CREATE TABLE Customer_Info_RAW (
     create_date DATE
 ) CHARACTER SET utf8mb4 ;
 
-CREATE TABLE Product_Info (
+CREATE TABLE Product_Info_RAW (
 	product_id INT,
     product_key VARCHAR(50),
 	product_name VARCHAR(50),

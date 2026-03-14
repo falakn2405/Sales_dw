@@ -37,3 +37,33 @@ SET
         WHEN UPPER(gender) = 'M' THEN 'Male'
         ELSE 'Other'
     END;
+    
+UPDATE product_info_clean
+SET
+	product_line = CASE UPPER(TRIM(product_line))
+		WHEN 'M' THEN 'Mountain'
+        WHEN 'R' THEN 'Road'
+        WHEN 'S' THEN 'Other Sales'
+        WHEN 'T' THEN 'Touring'
+        ELSE 'N/A'
+	END;
+    
+-- =========================================
+-- Spliting product key into category id
+    
+UPDATE product_info_clean AS p1
+JOIN (
+    SELECT 
+        product_key, 
+        start_date,
+        CAST(LEAD(start_date) OVER (PARTITION BY product_key ORDER BY start_date) - INTERVAL 1 DAY AS DATE) AS calculated_end_date
+    FROM product_info_raw
+) AS p2 
+ON p1.product_key = p2.product_key 
+AND p1.start_date = p2.start_date
+SET 
+    p1.start_date = CAST(p1.start_date AS DATE),
+    p1.end_date = p2.calculated_end_date;
+
+    
+    

@@ -31,8 +31,8 @@ SELECT
     update_date
 FROM customer_info;
 
--- =================================
--- Standardize gender and marital values
+-- =========================================
+-- Standardize values
 
 SELECT 
 	customer_id,
@@ -51,4 +51,39 @@ SELECT
     create_date,
     update_date
 FROM customer_info;
+
+SELECT
+	product_id,
+    product_key,
+    product_name,
+    product_cost,
+    CASE UPPER(TRIM(product_line))
+		WHEN 'M' THEN 'Mountain'
+        WHEN 'R' THEN 'Road'
+        WHEN 'S' THEN 'Other Sales'
+        WHEN 'T' THEN 'Touring'
+        ELSE 'N/A'
+	END AS product_line,
+    start_date,
+    end_date,
+    update_date
+FROM product_info_raw;
+
+-- =============================================================
+-- Extract category ID from product_key and create a new column
+
+SELECT 
+    product_key,
+    REPLACE(SUBSTRING(product_key, 1, 5), '-', '_') AS cat_id,
+    SUBSTRING(product_key, 7) AS prod_key
+FROM product_info_raw;
+
+-- ==============================
+-- Fixing start and end date
+
+SELECT *,
+	CAST(start_date AS DATE) AS start_date,
+    CAST(LEAD(start_date) OVER (PARTITION BY product_key ORDER BY start_date) - INTERVAL 1 DAY AS DATE) AS end_date
+FROM product_info_raw;
+
 
