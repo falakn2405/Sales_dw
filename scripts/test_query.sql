@@ -1,4 +1,4 @@
-SELECT * FROM customer_info;
+SELECT * FROM customer_info_raw;
 
 TRUNCATE TABLE customer_info;
 
@@ -29,3 +29,5 @@ TRUNCATE TABLE etl_log;
 SELECT * FROM etl_log;
 
 SHOW COLUMNS FROM customer_info;
+
+SELECT * FROM customer_info_clean;
