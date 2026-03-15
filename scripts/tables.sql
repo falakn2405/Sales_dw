@@ -1,4 +1,4 @@
-CREATE TABLE Customer_Info (
+CREATE TABLE Customer_Info_RAW (
 	customer_id INT,
     customer_key VARCHAR(50),
     first_name VARCHAR(50),
@@ -8,7 +8,7 @@ CREATE TABLE Customer_Info (
     create_date DATE
 ) CHARACTER SET utf8mb4 ;
 
-CREATE TABLE Product_Info (
+CREATE TABLE Product_Info_RAW (
 	product_id INT,
     product_key VARCHAR(50),
 	product_name VARCHAR(50),
@@ -47,3 +47,12 @@ CREATE TABLE Product_Category (
     subcat VARCHAR(50),
     maintenance VARCHAR(50)
 ) CHARACTER SET utf8mb4 ;
+
+CREATE TABLE etl_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    tbl_name VARCHAR(100),
+    start_time DATETIME,
+    end_time DATETIME,
+    duration_seconds INT,
+    log_status VARCHAR(50)
+) CHARACTER SET utf8mb4;
