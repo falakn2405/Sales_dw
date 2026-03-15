@@ -31,6 +31,13 @@ SELECT *
 FROM product_info_raw
 WHERE 
 	product_name != TRIM(product_name);
+    
+SELECT *
+FROM product_category_raw
+WHERE
+	cat != TRIM(cat)
+    OR subcat != TRIM(subcat)
+    OR maintenance != TRIM(maintenance);
 
 -- =======================================
 -- Check data consistency
@@ -57,6 +64,9 @@ FROM customer_profile_raw;
 
 SELECT DISTINCT cntry
 FROM customer_loc_raw;
+
+SELECT DISTINCT cat, maintenance
+FROM product_category_raw;
 
 -- ==============================
 -- Check invalid dates

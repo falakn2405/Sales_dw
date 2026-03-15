@@ -50,9 +50,11 @@ SELECT * FROM customer_profile_clean;
 -- ==========================================
 -- Product Category Table
 
-SELECT * FROM product_category;
+SELECT * FROM product_category_raw;
 
-SELECT COUNT(*) FROM product_category;
+SELECT COUNT(*) FROM product_category_raw;
+
+SELECT * FROM product_category_clean;
 
 -- ==========================================
 -- Log Table
