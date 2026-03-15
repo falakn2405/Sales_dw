@@ -44,3 +44,31 @@ FROM customer_info_raw;
 SELECT DISTINCT product_line
 FROM product_info_raw;
 
+SELECT DISTINCT sales, quantity, price
+FROM sales_details_raw
+WHERE 
+	sales != quantity * price
+    OR sales IS NULL OR quantity IS NULL OR price IS NULL
+    OR sales <= 0 OR quantity <= 0 OR price <= 0
+ORDER BY sales, quantity, price;
+
+-- ==============================
+-- Check invalid dates
+
+SELECT *
+	FROM customer_info_raw
+    WHERE create_date = '0000-00-00';
+
+SELECT order_date
+FROM sales_details_raw
+WHERE 
+	order_date <= 0 
+    OR LENGTH(order_date) != 8
+	OR order_date > 20500101 
+    OR order_date < 19000101;
+
+SELECT *
+FROM sales_details_raw
+WHERE
+	order_date > ship_date
+    OR order_date > due_date;

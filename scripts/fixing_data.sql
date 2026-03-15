@@ -79,11 +79,43 @@ SELECT
 FROM product_info_raw;
 
 -- ==============================
--- Fixing start and end date
+-- Fixing dates
 
 SELECT *,
 	CAST(start_date AS DATE) AS start_date,
     CAST(LEAD(start_date) OVER (PARTITION BY product_key ORDER BY start_date) - INTERVAL 1 DAY AS DATE) AS end_date
 FROM product_info_raw;
 
+SELECT 
+    order_date, ship_date, due_date,
+    CASE 
+        WHEN order_date = 0 OR LENGTH(CAST(order_date AS CHAR)) != 8 THEN NULL
+        ELSE STR_TO_DATE(CAST(order_date AS CHAR), '%Y%m%d')
+    END AS order_date,
+    CASE 
+        WHEN ship_date = 0 OR LENGTH(CAST(ship_date AS CHAR)) != 8 THEN NULL
+        ELSE STR_TO_DATE(CAST(ship_date AS CHAR), '%Y%m%d')
+    END AS ship_date,
+    CASE 
+        WHEN due_date = 0 OR LENGTH(CAST(due_date AS CHAR)) != 8 THEN NULL
+        ELSE STR_TO_DATE(CAST(due_date AS CHAR), '%Y%m%d')
+    END AS due_date
+FROM 
+    sales_details_raw;
 
+-- =============================================
+-- Correcting sales with qunatity and price
+
+SELECT 
+	sales, quantity, price,
+	CASE
+		WHEN sales IS NULL OR sales <= 0 OR sales != quantity * ABS(price)
+        THEN quantity * ABS(price)
+		ELSE sales
+	END AS sales,
+    CASE
+		WHEN price IS NULL OR price <= 0
+        THEN sales / NULLIF(quantity, 0)
+        ELSE price
+	END AS price
+FROM sales_details_raw

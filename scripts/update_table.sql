@@ -6,7 +6,7 @@ ADD COLUMN update_date DATETIME DEFAULT NOW();
 ALTER TABLE product_info_raw
 ADD COLUMN update_date DATETIME DEFAULT NOW();
 
-ALTER TABLE sales_details
+ALTER TABLE sales_details_raw
 ADD COLUMN update_date DATETIME DEFAULT NOW();
 
 ALTER TABLE customer_loc
@@ -23,3 +23,7 @@ ADD COLUMN cat_id VARCHAR(50) AFTER product_id, CHARACTER SET utf8mb4,
 MODIFY start_date DATE,
 MODIFY end_date DATE;
 
+ALTER TABLE sales_details_clean
+MODIFY order_date DATE,
+MODIFY ship_date DATE,
+MODIFY due_date DATE;
