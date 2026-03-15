@@ -55,6 +55,9 @@ ORDER BY sales, quantity, price;
 SELECT DISTINCT gen
 FROM customer_profile_raw;
 
+SELECT DISTINCT cntry
+FROM customer_loc_raw;
+
 -- ==============================
 -- Check invalid dates
 

@@ -56,6 +56,14 @@ SET
         ELSE 'Other'
     END;
     
+    UPDATE customer_loc_clean
+    SET cntry = CASE
+		WHEN TRIM(cntry) = 'DE' THEN 'GERMANY'
+		WHEN TRIM(cntry) IN ('US', 'USA')THEN 'United States'
+        WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'N/A'
+        ELSE TRIM(cntry)
+	END;
+    
 -- =========================================
 -- Spliting product key into category id
 

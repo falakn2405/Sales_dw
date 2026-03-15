@@ -86,6 +86,10 @@ SELECT
 	END AS cid
 FROM customer_profile_raw;
 
+SELECT cid,
+	REPLACE(cid, '-', '') cid
+FROM customer_loc_raw;
+
 -- ==============================
 -- Fixing dates
 
