@@ -79,6 +79,10 @@ SET cid = CASE
         ELSE cid
 	END;
 
+UPDATE customer_loc_clean
+SET 
+	cid = REPLACE(cid, '-', '');
+
 -- ===========================================
 -- Fixind null dates and its format
     

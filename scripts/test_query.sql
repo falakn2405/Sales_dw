@@ -32,9 +32,11 @@ SELECT * FROM sales_details_clean;
 -- ==========================================
 -- Customer Location Table
 
-SELECT * FROM customer_loc;
+SELECT * FROM customer_loc_raw;
 
-SELECT COUNT(*) FROM customer_loc;
+SELECT COUNT(*) FROM customer_loc_raw;
+
+SELECT * FROM customer_loc_clean;
 
 -- ==========================================
 -- Customer Profile Table
