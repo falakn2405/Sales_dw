@@ -4,7 +4,8 @@
 RENAME TABLE 
 	customer_info TO customer_info_raw,
     product_info TO product_info_raw,
-    sales_details TO sales_details_raw;
+    sales_details TO sales_details_raw,
+    customer_profile TO customer_profile_raw;
     
 -- =================
 -- New Tables
@@ -20,3 +21,7 @@ FROM product_info_raw;
 CREATE TABLE sales_details_clean AS
 SELECT *
 FROM sales_details_raw;
+
+CREATE TABLE customer_profile_clean AS
+SELECT *
+FROM customer_profile_raw;

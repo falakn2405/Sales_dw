@@ -69,14 +69,22 @@ SELECT
     update_date
 FROM product_info_raw;
 
--- =============================================================
--- Extract category ID from product_key and create a new column
+-- ============================
+-- Extract ID from key 
 
 SELECT 
     product_key,
     REPLACE(SUBSTRING(product_key, 1, 5), '-', '_') AS cat_id,
     SUBSTRING(product_key, 7) AS prod_key
 FROM product_info_raw;
+
+SELECT
+	cid,
+    CASE
+		WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LENGTH(cid))
+        ELSE cid
+	END AS cid
+FROM customer_profile_raw;
 
 -- ==============================
 -- Fixing dates
@@ -102,6 +110,13 @@ SELECT
     END AS due_date
 FROM 
     sales_details_raw;
+    
+SELECT bdate,
+CASE
+	WHEN bdate > NOW() THEN NULL
+    ELSE bdate
+END AS bdate
+FROM customer_profile_raw;
 
 -- =============================================
 -- Correcting sales with qunatity and price

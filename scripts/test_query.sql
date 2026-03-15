@@ -25,7 +25,7 @@ SELECT * FROM product_info_clean;
 
 SELECT * FROM sales_details_raw;
 
-SELECT COUNT(*) FROM sales_details;
+SELECT COUNT(*) FROM sales_details_raw;
 
 SELECT * FROM sales_details_clean;
 
@@ -39,9 +39,11 @@ SELECT COUNT(*) FROM customer_loc;
 -- ==========================================
 -- Customer Profile Table
 
-SELECT * FROM customer_profile;
+SELECT * FROM customer_profile_raw;
 
-SELECT COUNT(*) FROM customer_profile;
+SELECT COUNT(*) FROM customer_profile_raw;
+
+SELECT * FROM customer_profile_clean;
 
 -- ==========================================
 -- Product Category Table

@@ -52,6 +52,9 @@ WHERE
     OR sales <= 0 OR quantity <= 0 OR price <= 0
 ORDER BY sales, quantity, price;
 
+SELECT DISTINCT gen
+FROM customer_profile_raw;
+
 -- ==============================
 -- Check invalid dates
 
@@ -72,3 +75,9 @@ FROM sales_details_raw
 WHERE
 	order_date > ship_date
     OR order_date > due_date;
+    
+SELECT bdate
+FROM customer_profile_raw
+WHERE
+	bdate > NOW();
+    

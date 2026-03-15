@@ -48,6 +48,14 @@ SET
         ELSE 'N/A'
 	END;
     
+UPDATE customer_profile_clean
+SET 
+    gen = CASE
+        WHEN UPPER(gen) = 'F' THEN 'Female'
+        WHEN UPPER(gen) = 'M' THEN 'Male'
+        ELSE 'Other'
+    END;
+    
 -- =========================================
 -- Spliting product key into category id
 
@@ -55,6 +63,13 @@ UPDATE product_info_clean
 SET 
 	cat_id = REPLACE(SUBSTRING(product_key, 1, 5), '-', '_'),
     product_key = SUBSTRING(product_key, 7);
+
+UPDATE customer_profile_clean
+SET cid = CASE 
+    WHEN
+		cid LIKE 'NAS%' THEN SUBSTRING(cid, 4)
+        ELSE cid
+	END;
 
 -- ===========================================
 -- Fixind null dates and its format
