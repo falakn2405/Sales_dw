@@ -22,11 +22,6 @@ FROM sales;
 SELECT COUNT(DISTINCT order_number) AS total_orders 
 FROM sales;
 
--- The total orders per Customer
-SELECT customer_key, COUNT(order_number) AS total_orders
-FROM sales
-GROUP BY customer_key;
-
 -- ======================================
 -- The total number of products
 SELECT COUNT(product_key) AS total_products 
@@ -45,14 +40,6 @@ FROM sales;
 -- The total unique customers who placed orders
 SELECT COUNT(DISTINCT customer_key) AS total_customers 
 FROM sales;
-
--- ==================================
--- The high performing products
-SELECT product_key,
-       SUM(sales_amount) AS total_sales
-FROM sales
-GROUP BY product_key
-HAVING SUM(sales_amount) > 50000;
 
 
 -- ===================================
